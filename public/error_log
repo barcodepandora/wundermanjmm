@@ -120,3 +120,9 @@ Stack trace:
 [28-Apr-2016 19:28:00 UTC] PHP Fatal error:  Call to a member function getUser() on a non-object in /home/uzupis/public_html/wundermanjmm/public/login-callback.php on line 81
 [28-Apr-2016 19:29:15 UTC] PHP Fatal error:  Call to undefined method Facebook\Facebook::getUser() in /home/uzupis/public_html/wundermanjmm/public/login-callback.php on line 83
 [28-Apr-2016 19:32:41 UTC] PHP Fatal error:  Call to undefined method Facebook\Facebook::getGraphUser() in /home/uzupis/public_html/wundermanjmm/public/login-callback.php on line 83
+[28-Apr-2016 21:21:13 UTC] PHP Fatal error:  Class 'App\Image' not found in /home/uzupis/public_html/wundermanjmm/app/Http/Controllers/ImageController.php on line 23
+[28-Apr-2016 21:22:35 UTC] PHP Fatal error:  Class 'App\wundermanjmm\entities\Image' not found in /home/uzupis/public_html/wundermanjmm/app/Http/Controllers/ImageController.php on line 23
+[28-Apr-2016 21:26:49 UTC] PHP Fatal error:  Class 'wundermanjmm\entities\Image' not found in /home/uzupis/public_html/wundermanjmm/app/Http/Controllers/ImageController.php on line 23
+[28-Apr-2016 21:29:06 UTC] PHP Fatal error:  Class 'wundermanjmm\entities\Image' not found in /home/uzupis/public_html/wundermanjmm/app/Http/Controllers/ImageController.php on line 23
+[28-Apr-2016 22:14:36 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home/uzupis/public_html/wundermanjmm/storage/framework/views/768f4c429e8b7ad34cef6a4d167530dd4407ee6b.php on line 12
+[28-Apr-2016 22:15:02 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home/uzupis/public_html/wundermanjmm/storage/framework/views/768f4c429e8b7ad34cef6a4d167530dd4407ee6b.php on line 12

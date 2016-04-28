@@ -77,6 +77,14 @@ echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';*/
 						  array('class'=>'btn btn-primary')) !!}
 						</div>
 					{!! Form::close() !!}
+
+					{!! Form::open(array('route' => 'gallery', 'class' => 'form')) !!}
+				
+						<div class="form-group">
+							{!! Form::submit('Vamos a ver fotos', 
+						  array('class'=>'btn btn-primary')) !!}
+						</div>
+					{!! Form::close() !!}
 					
 				</div>
 

@@ -17,3 +17,11 @@ Route::get('/', function () {
 
 //Route::get('sandy', 'WelcomeController@conface');
 Route::post('sandy', ['as' => 'sandy', 'uses' => 'WelcomeController@conface']);
+
+/*Route::get('/', function() { 
+	return redirect('/image'); 
+});*/
+Route::post('gallery', ['as' => 'gallery', 'uses' => 'ImageController@go2images']);
+Route::resource('/image', 'ImageController');
+
+//Route::get('gallery', 'ImageController@go2images'); 
