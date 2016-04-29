@@ -29,5 +29,19 @@ class WelcomeController extends Controller {
 	{
 		return view('conface');
 	}
+
+	/**
+	 */
+	public function welcomefacebook()
+	{
+		return view('welcomefacebook');
+	}
+
+	/**
+	 */
+	public function go2sandy()
+	{
+		return view('sandyloveu');
+	}
 	
 }

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 
 
+
 <?php
 
+
+session_start();
 
 require_once '/home/uzupis/public_html/facebook-php-sdk-v4-5.0.0/src/Facebook/autoload.php';
 
@@ -14,88 +17,26 @@ $fb = new Facebook\Facebook([
 ]);
 
 // GET TOKEN
-/*$helper = $fb->getRedirectLoginHelper();
+$helper = $fb->getRedirectLoginHelper();
 $permissions = ['email', 'user_likes']; // optional
-$loginUrl = $helper->getLoginUrl('http://{your-website}/login-callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl('http://projectrevista.com/wundermanjmm/public/login-callback.php', $permissions);
 
-echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';*/
+//$_SESSION['me'] = null;
 
 ?>
 
-<html>
-    <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Hola. esta es mi prueba para Wunderman</div>
-                
-                <div class="form-group">
-
-					<?php echo Form::open(array('route' => 'sandy', 'class' => 'form')); ?>
 
 
-						<?php echo Form::text('name', null, 
-							array('required', 
-								  'class'=>'form-control', 
-								  'placeholder'=>'Aqui va un nombre de facebook')); ?>
 
-				
-						<div class="form-group">
-							<?php echo Form::submit('Trae tu facebook', 
+<?php $__env->startSection('body'); ?>
+         <div class="form-group">
+                     <?php echo Form::open(array('url'=> $loginUrl, 'class' => 'form')); ?>
+
+                        <?php echo Form::submit('Importarse de Facebook', 
 						  array('class'=>'btn btn-primary')); ?>
 
-						</div>
-					<?php echo Form::close(); ?>
+                     <?php echo Form::close(); ?>
 
-
-					<?php echo Form::open(array('route' => 'gallery', 'class' => 'form')); ?>
-
-				
-						<div class="form-group">
-							<?php echo Form::submit('Vamos a ver fotos', 
-						  array('class'=>'btn btn-primary')); ?>
-
-						</div>
-					<?php echo Form::close(); ?>
-
-					
-				</div>
-
-            </div>
-        </div>
-    </body>
-</html>
+         </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('register', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
