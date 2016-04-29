@@ -2,27 +2,30 @@
 
 <?php
 
+// Fields for client
 $name = null;
 $last = null;
 
+// We validate if there's previous values
 if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
 
 	$name = $_SESSION['first'];
 	//$last = $me->getLastName();
 }
 
+// Trying to load objects
 /*if (isset($_SESSION['me']) && !empty($_SESSION['me'])) {
 
 	$me = $_SESSION['me'];
 	$name = $me->getName();
-	//$last = $me->getLastName();
+	$last = $me->getLastName();
 }*/
 
 ?>
 
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Wunderman test with Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -66,16 +69,23 @@ if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
             <div class="content">
                 <div class="title">Hola. esta es mi prueba para Wunderman</div>
                 
-         <div id="body">
-            <?php echo $__env->yieldContent('body'); ?>
-         </div>
+         		<div id="body">
+            		<?php echo $__env->yieldContent('body'); ?>
+         		</div>
 
                 <div class="form-group">
 
+					// DO it
 					<?php echo Form::open(array('route' => 'sandy', 'class' => 'form')); ?>
 
 
-						<?php echo Form::text('name', $name, 
+					<?php echo Form::close(); ?>
+
+
+					<?php echo Form::open(array('route' => 'register', 'class' => 'form')); ?>
+
+
+						<?php echo Form::text('firstname', $name, 
 							array('required', 
 								  'class'=>'form-control', 
 								  'placeholder'=>'Nombre')); ?>
@@ -105,21 +115,22 @@ if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
 								  'class'=>'form-control', 
 								  'placeholder'=>'email')); ?>
 
+						<?php echo e(Form::checkbox('terms')); ?>
 
-					<?php echo Form::close(); ?>
+						<?php echo e(Form::label('Acepto términos y condiciones')); ?>
 
+						<br/>
+						<?php echo e(Form::checkbox('receive')); ?>
 
-					<?php echo Form::open(array('route' => 'gallery', 'class' => 'form')); ?>
+						<?php echo e(Form::label('Acepto recibir noticias y promociones')); ?>
 
-				
+						
 						<br/><div class="form-group">
 							<?php echo Form::submit('Registrarse', 
 						  array('class'=>'btn btn-primary')); ?>
 
 						</div>
 						
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
 					<?php echo Form::close(); ?>
 
 
@@ -132,34 +143,12 @@ if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
 
 						</div>
 						
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 					<?php echo Form::close(); ?>
 
 										
 				</div>
 
             </div>
-        </div>
+        </div>        
     </body>
 </html>

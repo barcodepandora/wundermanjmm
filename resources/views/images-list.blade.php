@@ -1,3 +1,5 @@
+
+
 @extends('global-layout')
 
 @section('body')
@@ -13,18 +15,22 @@
       @forelse($images as $image)
          <div class="col-md-3">
             <div class="thumbnail">
-               <img src="{{asset($image->file)}}" />
+
+            	<a  data-toggle="modal" data-target="#myModal">
+               		<img src="{{asset($image->file)}}"/>
+               	</a>
+
                <div class="caption">
                   <h3>{{$image->caption}}</h3>
                   <p>{!! substr($image->description, 0,100) !!}</p>
                   <p>
                      <div class="row text-center" style="padding-left:1em;">
-                     <a href="{{ url('/image/'.$image->id.'/edit') }}" class="btn btn-warning pull-left">Edit</a>
-                     <span class="pull-left">&nbsp;</span>
-                     {!! Form::open(['url'=>'/image/'.$image->id, 'class'=>'pull-left']) !!}
-                        {!! Form::hidden('_method', 'DELETE') !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Are you sure?\')']) !!}
-                     {!! Form::close() !!}
+
+                     	<span class="pull-left">&nbsp;</span>
+                     	{!! Form::open(['url'=>'/image/'.$image->id, 'class'=>'pull-left']) !!}
+                        	{!! Form::hidden('_method', 'DELETE') !!}
+                        	{!! Form::submit('Delete', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Are you sure?\')']) !!}
+                     	{!! Form::close() !!}
                      </div>
                   </p>
                </div>
@@ -35,4 +41,6 @@
       @endforelse
    </div>
    <div align="center">{!! $images->render() !!}</div>
+   
+
 @stop

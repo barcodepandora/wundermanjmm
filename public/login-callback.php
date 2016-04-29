@@ -1,13 +1,24 @@
+
+<!-- 
+
+login-callback.php.
+
+Callback to request a connection with Facebook
+
+TODO: How to create a callback from a blade.
+
+REFERENCES:
+https://developers.facebook.com/docs/php/howto/example_facebook_login
+-->
+
+<!-- PHP section. -->
 <?php
 
-// CALLBACK DE GESTION DE USUARIOS DE FACEBOOK
-// TODO: *Ver como crear un callback de un blade de Laravel
-
-session_start(); // Lanzamos sesion. Requerido.
+session_start(); // Launching session. Required.
 
 require_once '/home/uzupis/public_html/facebook-php-sdk-v4-5.0.0/src/Facebook/autoload.php'; // autoload
 
-// Creamos instacia de app de facebook
+// Creating instance de app de facebook
 $fb = new Facebook\Facebook([
   'app_id' => '498588776999846',
   'app_secret' => '2e2fdc3eeaeec1bfec03f16e0ff43037',
@@ -16,7 +27,7 @@ $fb = new Facebook\Facebook([
 
 $helper = $fb->getRedirectLoginHelper(); // Helper
 
-// Token. Requerido para conseguir usuario.
+// Token. Required for getting user.
 try {
   $accessToken = $helper->getAccessToken();
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
@@ -29,7 +40,7 @@ try {
   exit;
 }
 
-// Validamos token en la sesion.
+// Validating token en la sesion.
 if (! isset($accessToken)) {
   if ($helper->getError()) {
     header('HTTP/1.0 401 Unauthorized');
@@ -60,8 +71,7 @@ $_SESSION['fb_access_token'] = (string) $accessToken;
 // You can redirect them to a members-only page.
 //header('Location: https://example.com/members.php');
 
-
-// Conseguimos GraphUser
+// Getting GraphUser
 try {
   // Get the Facebook\GraphNodes\GraphUser object for the current user.
   // If you provided a 'default_access_token', the '{access-token}' is optional.
@@ -78,14 +88,14 @@ try {
 
 $me = $response->getGraphUser();
 
-// Pasamos contenido del usuario a la sesion
-// TODO: *Ver como pasar el objeto sin que de error *Ver por que no da getFirstName o getLastName
+// Loading contents to session.
+// TODO: *How to pass object without errors *Why we can't get getFirstName or getLastName?
 //$_SESSION['me'] = $me;
 //$_SESSION['first'] = $me->getFirstName();
 $_SESSION['first'] = $me->getName();
 
-// Redirigimos
-// TODO: Ver una forma mas elegante de gestionar usuario entre vistas
+// Redirecting
+// TODO: Get a more elegant way to manage views
 header('Location: http://projectrevista.com/wundermanjmm/public');
 
 ?>

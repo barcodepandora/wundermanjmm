@@ -11,21 +11,25 @@
       <?php $__empty_1 = true; foreach($images as $image): $__empty_1 = false; ?>
          <div class="col-md-3">
             <div class="thumbnail">
-               <img src="<?php echo e(asset($image->file)); ?>" />
+
+            	<a  data-toggle="modal" data-target="#myModal">
+               		<img src="<?php echo e(asset($image->file)); ?>"/>
+               	</a>
+
                <div class="caption">
                   <h3><?php echo e($image->caption); ?></h3>
                   <p><?php echo substr($image->description, 0,100); ?></p>
                   <p>
                      <div class="row text-center" style="padding-left:1em;">
-                     <a href="<?php echo e(url('/image/'.$image->id.'/edit')); ?>" class="btn btn-warning pull-left">Edit</a>
-                     <span class="pull-left">&nbsp;</span>
-                     <?php echo Form::open(['url'=>'/image/'.$image->id, 'class'=>'pull-left']); ?>
 
-                        <?php echo Form::hidden('_method', 'DELETE'); ?>
+                     	<span class="pull-left">&nbsp;</span>
+                     	<?php echo Form::open(['url'=>'/image/'.$image->id, 'class'=>'pull-left']); ?>
 
-                        <?php echo Form::submit('Delete', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Are you sure?\')']); ?>
+                        	<?php echo Form::hidden('_method', 'DELETE'); ?>
 
-                     <?php echo Form::close(); ?>
+                        	<?php echo Form::submit('Delete', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Are you sure?\')']); ?>
+
+                     	<?php echo Form::close(); ?>
 
                      </div>
                   </p>
@@ -37,5 +41,7 @@
       <?php endif; ?>
    </div>
    <div align="center"><?php echo $images->render(); ?></div>
+   
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('global-layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

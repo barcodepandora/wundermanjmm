@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 
+<!-- 
+
+register.blade.php.
+
+Template for register
+
+-->
+
+
+<!-- PHP section. -->
 <?php
 
+// Fields for client
 $name = null;
 $last = null;
 
+// We validate if there's previous values
 if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
 
 	$name = $_SESSION['first'];
 	//$last = $me->getLastName();
 }
 
+// Trying to load objects
 /*if (isset($_SESSION['me']) && !empty($_SESSION['me'])) {
 
 	$me = $_SESSION['me'];
 	$name = $me->getName();
-	//$last = $me->getLastName();
+	$last = $me->getLastName();
 }*/
 
 ?>
 
+<!-- Blade section. -->
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Wunderman test with Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -63,18 +77,21 @@ if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
     </head>
     <body>
         <div class="container">
+        
             <div class="content">
-                <div class="title">Hola. esta es mi prueba para Wunderman</div>
+            
+                <div class="title">Hi. Presenting Wunderman test</div>
                 
-         <div id="body">
-            @yield('body')
-         </div>
+         		<div id="body">
+            		@yield('body')
+         		</div>
 
                 <div class="form-group">
 
-					{!! Form::open(array('route' => 'sandy', 'class' => 'form')) !!}
+					<!-- Form for registering -->
+					{!! Form::open(array('route' => 'register', 'class' => 'form')) !!}
 
-						{!! Form::text('name', $name, 
+						{!! Form::text('firstname', $name, 
 							array('required', 
 								  'class'=>'form-control', 
 								  'placeholder'=>'Nombre')) !!}
@@ -98,54 +115,30 @@ if (isset($_SESSION['first']) && !empty($_SESSION['first'])) {
 							array('required', 
 								  'class'=>'form-control', 
 								  'placeholder'=>'email')) !!}
-
-					{!! Form::close() !!}
-
-					{!! Form::open(array('route' => 'gallery', 'class' => 'form')) !!}
-				
+						{{ Form::checkbox('terms') }}
+						{{ Form::label('Acepto términos y condiciones') }}
+						<br/>
+						{{ Form::checkbox('receive') }}
+						{{ Form::label('Acepto recibir noticias y promociones') }}
+						
 						<br/><div class="form-group">
 							{!! Form::submit('Registrarse', 
 						  array('class'=>'btn btn-primary')) !!}
 						</div>
 						
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
 					{!! Form::close() !!}
 
+					<!-- Form for visiting gallery -->
 					{!! Form::open(array('route' => 'gallery', 'class' => 'form')) !!}
 				
 						<br/><div class="form-group">
 							{!! Form::submit('Vamos a ver fotos', 
 						  array('class'=>'btn btn-primary')) !!}
 						</div>
-						
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 					{!! Form::close() !!}
 										
 				</div>
-
             </div>
-        </div>
+        </div>        
     </body>
 </html>

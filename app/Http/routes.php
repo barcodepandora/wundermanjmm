@@ -20,12 +20,10 @@ Route::post('sandy', ['as' => 'sandy', 'uses' => 'WelcomeController@conface']);
 
 Route::any('welcomefacebook', ['as' => 'welcomefacebook', 'uses' => 'WelcomeController@welcomefacebook']);
 
-/*Route::get('/', function() { 
-	return redirect('/image'); 
-});*/
 Route::post('gallery', ['as' => 'gallery', 'uses' => 'ImageController@go2images']);
 Route::resource('/image', 'ImageController');
 
+Route::post('register', ['as' => 'register', 'uses' => 'ClientController@store']);
 
 Route::post('boo', ['as' => 'boo', 'uses' => 'WelcomeController@go2sandy']);
 
