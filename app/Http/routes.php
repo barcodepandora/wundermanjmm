@@ -15,16 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('sandy', 'WelcomeController@conface');
-Route::post('sandy', ['as' => 'sandy', 'uses' => 'WelcomeController@conface']);
+// Route for drafts
+Route::get('draft','WelcomeController@draft');
 
-Route::any('welcomefacebook', ['as' => 'welcomefacebook', 'uses' => 'WelcomeController@welcomefacebook']);
-
+// Route for viewing gallery
 Route::post('gallery', ['as' => 'gallery', 'uses' => 'ImageController@go2images']);
+
+// Route for CRUD gallery
 Route::resource('/image', 'ImageController');
 
+// Route for upload form
+Route::post('nueva', ['as' => 'nueva', 'uses' => 'ImageController@nueva']);
+
+// Route for save a person
 Route::post('register', ['as' => 'register', 'uses' => 'ClientController@store']);
 
-Route::post('boo', ['as' => 'boo', 'uses' => 'WelcomeController@go2sandy']);
-
+//Route::post('boo', ['as' => 'boo', 'uses' => 'WelcomeController@go2sandy']);
 //Route::get('gallery', 'ImageController@go2images'); 

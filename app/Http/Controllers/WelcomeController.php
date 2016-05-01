@@ -24,24 +24,10 @@ class WelcomeController extends Controller {
 	}
 
 	/**
+		Returns a draft
 	 */
-	public function conface()
+	public function draft()
 	{
-		return view('conface');
+		return view('draft');
 	}
-
-	/**
-	 */
-	public function welcomefacebook()
-	{
-		return view('welcomefacebook');
-	}
-
-	/**
-	 */
-	public function go2sandy()
-	{
-		return view('sandyloveu');
-	}
-	
 }

@@ -8,14 +8,16 @@ use App\Http\Requests;
 
 use wundermanjmm\entities\Image;
 use Validator;
+use wundermanjmm\entities\Client;
 
 class ImageController extends Controller
 {
     //
    public function index()
    {
-      $images = Image::paginate(10);
-      return view('images-list')->with('images', $images);
+      //$images = Image::paginate(10);
+      $client = Client::find($request->input('client'));
+      return ClientController::to_images($client);;
    }
 
    public function go2images()
@@ -23,10 +25,17 @@ class ImageController extends Controller
       $images = Image::paginate(10);
       return view('images-list')->with('images', $images);
    }
-
+   
    public function create()
    {
       return view('add-new-image');
+   }
+
+   public function nueva(Request $request)
+   {
+   
+   	  $client = Client::find($request->input('client'));
+      return view('add-new-image')->with('client', $client);
    }
 
    /**
@@ -60,9 +69,14 @@ class ImageController extends Controller
         $image->file = $destination_path . $filename;
         $image->caption = $request->input('caption');
         $image->description = $request->input('description');
+        
+        $image->owner = $request->input('client');
+        
         $image->save();
 
-        return redirect('/image')->with('message','You just uploaded an image!');
+		$client = Client::find($image->owner);
+        $images = Image::where('owner', '=', $client->id)->paginate(10); // Loading images view. Pagination is REQUIRED
+        return view('images-list')->with('images', $images)->with('client', $client);
    }
 
    /**
@@ -125,7 +139,10 @@ class ImageController extends Controller
         $image->description = $request->input('description');
         $image->save();
 
-        return redirect('/image')->with('message','You just updated an image!');
+        //return redirect('/image')->with('message','You just updated an image!');
+        $client = Client::find($image->owner);
+        $images = Image::where('owner', '=', $client->id)->paginate(10); // Loading images view. Pagination is REQUIRED
+        return view('images-list')->with('images', $images)->with('client', $client);
    }
 
    /**

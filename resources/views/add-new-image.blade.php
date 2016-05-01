@@ -21,5 +21,6 @@
       <button type="submit" class="btn btn-primary">Upload</button>
       <a href="{{ url('/image') }}" class="btn btn-warning">Cancel</a>
 
+		{!! Form::hidden('client', $client->id) !!} <!-- Hidden client. -->
    {!! Form::close() !!}
 @stop

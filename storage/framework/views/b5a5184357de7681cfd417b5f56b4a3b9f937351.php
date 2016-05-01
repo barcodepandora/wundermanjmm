@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 
+<!-- 
+
+welcome.balde.php.
+
+View for register with Facebook
+
+REFERENCES:
+https://developers.facebook.com/docs/php/howto/example_facebook_login
+-->
+
+<!-- PHP section. -->
 <?php
 
-
-session_start();
+session_start(); // Launching session. Required.
 
 require_once '/home/uzupis/public_html/facebook-php-sdk-v4-5.0.0/src/Facebook/autoload.php';
+	// Impoting autoload. TODO: Do it with relative paths.
 
-// CONNECT
+// Connecting
 $fb = new Facebook\Facebook([
   'app_id' => '498588776999846',
   'app_secret' => '2e2fdc3eeaeec1bfec03f16e0ff43037',
   'default_graph_version' => 'v2.5',
 ]);
 
-// GET TOKEN
+// Get Token
 $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email', 'user_likes']; // optional
 $loginUrl = $helper->getLoginUrl('http://projectrevista.com/wundermanjmm/public/login-callback.php', $permissions);
 
-//$_SESSION['me'] = null;
+//$_SESSION['me'] = null; // 4 test.
 
 ?>
 
+<!-- Blade section. -->
+ <!-- Importing register blade. -->
 
+<?php $__env->startSection('body'); ?>  <!-- Adding to body. -->
 
-
-<?php $__env->startSection('body'); ?>
          <div class="form-group">
-                     <?php echo Form::open(array('url'=> $loginUrl, 'class' => 'form')); ?>
+         
+         		 <!-- Form to import data from Facebook, -->
+                <?php echo Form::open(array('url'=> $loginUrl, 'class' => 'form')); ?>
 
-                        <?php echo Form::submit('Importarse de Facebook', 
-						  array('class'=>'btn btn-primary')); ?>
+					<?php echo Form::submit('Importarse de Facebook', 
+						  array('class'=>'btn btn-primary btnform')); ?>
 
-                     <?php echo Form::close(); ?>
+      			<?php echo Form::close(); ?>
 
          </div>
 <?php $__env->stopSection(); ?>

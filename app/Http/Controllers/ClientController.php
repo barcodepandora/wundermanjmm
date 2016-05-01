@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use wundermanjmm\entities\Client;
 use Validator;
+use wundermanjmm\entities\Image;
 
 class ClientController extends Controller
 {
@@ -36,11 +37,18 @@ class ClientController extends Controller
 		
 		// Save
 		$client->save();
-
-		// Back
-        return view('gallery');
+		return $this->to_images($client);
    }
 
+   /**
+    */
+   public function to_images($client)
+   {
+   
+        $images = Image::where('owner', '=', $client->id)->paginate(10); // Loading images view. Pagination is REQUIRED
+        return view('images-list')->with('images', $images)->with('client', $client);
+   }
+   
    /**
     */
    public function show($id)

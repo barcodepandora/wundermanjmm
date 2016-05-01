@@ -44,7 +44,7 @@ $loginUrl = $helper->getLoginUrl('http://projectrevista.com/wundermanjmm/public/
          		 <!-- Form to import data from Facebook, -->
                 {!! Form::open(array('url'=> $loginUrl, 'class' => 'form')) !!}
 					{!! Form::submit('Importarse de Facebook', 
-						  array('class'=>'btn btn-primary')) !!}
+						  array('class'=>'btn btn-primary btnform')) !!}
       			{!! Form::close() !!}
          </div>
 @stop

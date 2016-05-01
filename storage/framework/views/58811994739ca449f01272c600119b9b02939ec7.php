@@ -20,6 +20,7 @@
       <button type="submit" class="btn btn-primary">Upload</button>
       <a href="<?php echo e(url('/image')); ?>" class="btn btn-warning">Cancel</a>
 
+		<?php echo Form::hidden('client', $client->id); ?> <!-- Hidden client. -->
    <?php echo Form::close(); ?>
 
 <?php $__env->stopSection(); ?>

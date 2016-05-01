@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddClientToImages' => $baseDir . '/database/migrations/2016_04_30_230949_add_client_to_images.php',
+    'AddOwnerToImages' => $baseDir . '/database/migrations/2016_04_30_231154_add_owner_to_images.php',
     'CreateClientsTable' => $baseDir . '/database/migrations/2016_04_29_151211_create_clients_table.php',
     'CreateImagesTable' => $baseDir . '/database/migrations/2016_04_28_204606_create_images_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
