@@ -1,3 +1,16 @@
+<!-- 
+
+add-new-image.blade.php.
+
+Extension for adding images
+Juan Manuel Moreno B. 29/04/2016
+
+REFERENCES:
+http://the-amazing-php.blogspot.com.co/2015/06/laravel-5.1-image-gallery-crud.html
+-->
+
+
+
 <?php $__env->startSection('body'); ?>
    <?php echo Form::open(['url'=>'/image', 'method'=>'POST', 'files'=>'true']); ?>
 

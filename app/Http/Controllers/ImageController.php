@@ -1,5 +1,14 @@
 <?php
 
+/* 
+
+ImageController.php.
+
+Manages requirements of galleries
+
+Juan Manuel Moreno B. 29/04/2016
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

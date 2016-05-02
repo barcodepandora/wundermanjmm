@@ -1,5 +1,14 @@
 <?php
 
+/* 
+
+ClientController.php.
+
+Manages requirements of client or users
+
+Juan Manuel Moreno B. 29/04/2016
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
