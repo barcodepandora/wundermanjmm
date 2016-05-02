@@ -41,6 +41,7 @@ class ClientController extends Controller
    }
 
    /**
+   		Load view of images with Client object
     */
    public function to_images($client)
    {

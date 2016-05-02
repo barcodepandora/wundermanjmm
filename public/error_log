@@ -158,3 +158,5 @@ Stack trace:
 [01-May-2016 02:00:19 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ']' in /home/uzupis/public_html/wundermanjmm/app/Http/routes.php on line 28
 [01-May-2016 02:00:20 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ']' in /home/uzupis/public_html/wundermanjmm/app/Http/routes.php on line 28
 [01-May-2016 02:15:22 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\to_images() in /home/uzupis/public_html/wundermanjmm/app/Http/Controllers/ClientController.php on line 41
+[02-May-2016 01:45:22 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/uzupis/public_html/wundermanjmm/storage/framework/views/2328eaa275b6607d114188465bcb2e58d7ffaea9.php on line 100
+[02-May-2016 01:46:12 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/uzupis/public_html/wundermanjmm/storage/framework/views/2328eaa275b6607d114188465bcb2e58d7ffaea9.php on line 101

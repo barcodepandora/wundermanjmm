@@ -26,6 +26,8 @@ $me = $_SESSION['first']; // Getting name from user.
     
     	<meta charset="utf-8">
 		<title>Gallery for Wunderman test</title>
+		
+		<!-- style section. -->
 		<style>
 		
 			.whitetext {
@@ -95,8 +97,11 @@ $me = $_SESSION['first']; // Getting name from user.
 										<p class="modal-body">La foto es de</p>
 									</div>
 									<div class="modal-title">
-				
-										<h4><?php echo $me; ?></h4>
+
+										<h4><?php echo $client->firstname . ' ' . $client->lastname; ?></h4>
+										<p class="modal-body" text-align="left">Id: <?php echo $client->typeid . ' ' . $client->noid; ?></p>
+										<p class="modal-body" text-align="left">Mobile: <?php echo $client->mobile; ?></p>
+										<p class="modal-body" text-align="left">email: <?php echo $client->email; ?></p>
 									</div>
 									<div class="modal-footer">
 		
@@ -115,6 +120,7 @@ $me = $_SESSION['first']; // Getting name from user.
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>           
+        <script src="assets/js/scripts.js"></script>  
+                 
    </body>
 </html>

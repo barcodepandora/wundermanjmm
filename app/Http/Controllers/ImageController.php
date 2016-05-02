@@ -17,7 +17,7 @@ class ImageController extends Controller
    {
       //$images = Image::paginate(10);
       $client = Client::find($request->input('client'));
-      return ClientController::to_images($client);;
+      return ClientController::to_images($client);
    }
 
    public function go2images()
@@ -70,10 +70,11 @@ class ImageController extends Controller
         $image->caption = $request->input('caption');
         $image->description = $request->input('description');
         
-        $image->owner = $request->input('client');
+        $image->owner = $request->input('client'); // Adding client as a owner of the new image.
         
         $image->save();
 
+		// Reloading image list including client owner
 		$client = Client::find($image->owner);
         $images = Image::where('owner', '=', $client->id)->paginate(10); // Loading images view. Pagination is REQUIRED
         return view('images-list')->with('images', $images)->with('client', $client);

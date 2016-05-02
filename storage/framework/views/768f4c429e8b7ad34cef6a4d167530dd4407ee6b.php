@@ -16,14 +16,55 @@ http://the-amazing-php.blogspot.com.co/2015/06/laravel-5.1-image-gallery-crud.ht
 -->
 <?php $__env->startSection('body'); ?>
 
-   <div class="row">
+	<!-- Javascript -->
+	<script type="text/javascript">
+	
+		 /*
+		 	Orders div images by caption field
+		 	
+		 	REFERENCE: http://jsfiddle.net/NfVxk/
+		 */
+		function order_caption() {
+	
+			var div = $('#photos');
+			var listitems = div.children('.col-md-3');
+			listitems.sort(function (a, b) {
+	
+				//alert("order_caption do it 4 " + $(a).attr('caption'));
+				return (+$(a).attr('caption') > +$(b).attr('caption')) ?
+				1 : (+$(a).attr('caption') < +$(b).attr('caption')) ? 
+				-1 : 0;
+			})
+			$.each(listitems, function (idx, itm) { div.append(itm); });
+		}
+
+		/*
+			Orders div images by date field
+			
+			REFERENCE: http://jsfiddle.net/NfVxk/
+		 */
+		 function order_date() {
+ 
+				var div = $('#photos');
+				var listitems = div.children('.col-md-3');
+				listitems.sort(function (a, b) {
+		
+					return (+$(a).attr('saved') > +$(b).attr('saved')) ?
+					-1 : (+$(a).attr('saved') < +$(b).attr('saved')) ? 
+					1 : 0;
+				})
+				$.each(listitems, function (idx, itm) { div.append(itm); });
+			}
+
+	</script>
+	
+   <div class="row" id="photos"> <!-- Wrapper image list section-->
    
       <?php if(count($images) > 0): ?> <!-- There are images. -->
       
-         <div class="col-md-12 text-center" >
+         <div class="col-md-12 text-center" caption="a" saved="1" >
          
-         	<?php echo e(Form::hidden('client', $client->id)); ?> 
-
+         	<!-- Loading view for adding another new image. -->
 			<?php echo Form::open(['route'=>'nueva', 'class'=>'pull-left']); ?>
 
 				<?php echo Form::hidden('client', $client->id); ?> <!-- Hidden client. -->
@@ -32,6 +73,9 @@ http://the-amazing-php.blogspot.com.co/2015/06/laravel-5.1-image-gallery-crud.ht
 			<?php echo Form::close(); ?>
 
 
+			<input type="button" value="Ordenar por titulo" onclick="order_caption();"/>
+			<input type="button" value="Ordenar por fecha" onclick="order_date();"/>
+			
 			 <!-- 
 				<a href="<?php echo e(url('/image/create')); ?>" class="btn btn-primary" role="button"> <!-- link for adding -->
             
@@ -45,7 +89,8 @@ http://the-amazing-php.blogspot.com.co/2015/06/laravel-5.1-image-gallery-crud.ht
       
       <?php $__empty_1 = true; foreach($images as $image): $__empty_1 = false; ?> <!-- Loading section. -->
       
-         <div class="col-md-3">
+         <div class="col-md-3"  caption="<?php echo e($image->caption); ?>" saved="<?php echo e($image->created_at); ?>" > <!-- Image section-->
+         
             <div class="thumbnail">
 
             	<a  data-toggle="modal" data-target="#myModal">
@@ -76,6 +121,7 @@ http://the-amazing-php.blogspot.com.co/2015/06/laravel-5.1-image-gallery-crud.ht
          </div>
       <?php endforeach; if ($__empty_1): ?>
       
+      	<!-- Loading view for adding the first image. -->
 		<?php echo Form::open(['route'=>'nueva', 'class'=>'pull-left']); ?>
 
 			<?php echo Form::hidden('client', $client->id); ?> <!-- Hidden client. -->

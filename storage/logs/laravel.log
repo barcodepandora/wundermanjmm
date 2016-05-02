@@ -13955,3 +13955,9 @@ Stack trace:
 #57 /home/uzupis/public_html/wundermanjmm/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #58 /home/uzupis/public_html/wundermanjmm/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #59 {main}  
+[2016-05-02 01:45:22] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '?'' in /home/uzupis/public_html/wundermanjmm/storage/framework/views/2328eaa275b6607d114188465bcb2e58d7ffaea9.php:100
+Stack trace:
+#0 {main}  
+[2016-05-02 01:46:12] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '?'' in /home/uzupis/public_html/wundermanjmm/storage/framework/views/2328eaa275b6607d114188465bcb2e58d7ffaea9.php:101
+Stack trace:
+#0 {main}  
